@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style2.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Styling for the 7-day prediction output */
+    #futurePredictionOutput {
+      white-space: pre-wrap;
+      margin-top: 10px;
+      color: var(--color, #fff);
+      background: rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    #futurePredictionBtn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: var(--primary-color, #0F3460);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #futurePredictionBtn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="weather-card">
+      <h1 style="color: green;">AI Weather App </h1>
+      <h3>Weather App</h3>
+
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Enter city name"
+        aria-label="City name input"
+      />
+      <button
+        id="city-input-btn"
+        onclick="weatherFn($('#city-input').val())"
+        aria-label="Get Weather Button"
+      >
+        Get Weather
+      </button>
+
+      <!-- Future Prediction Button -->
+      <button id="futurePredictionBtn">Future 7-Day Prediction</button>
+
+      <!-- Future Prediction Output -->
+      <pre id="futurePredictionOutput"></pre>
+
+      <div id="weather-info" class="animate__animated animate__fadeIn">
+        <h3 id="city-name"></h3>
+        <p id="date"></p>
+        <img id="weather-icon" src="" alt="Weather Icon" />
+        <p id="temperature"></p>
+        <p id="description"></p>
+        <p id="wind-speed"></p>
+      </div>
+
+      <div id="aiPrediction" style="white-space: pre-wrap; margin-top: 15px;"></div>
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="script2.js"></script>
+</body>
+</html>

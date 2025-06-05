@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Weather App</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <section class="container">
+    <div class="login-container">
+      <div class="circle circle-one"></div>
+
+      <div class="form-container">
+
+        <h1 class="opacity">LOGIN</h1>
+
+        <form id="loginForm">
+          <!-- Use either Email or Username input as needed -->
+          <input type="email" id="email" placeholder="Email" required />
+          <!-- If you want to use username instead of email, uncomment below and remove email above -->
+          <!-- <input type="text" id="username" placeholder="Username" required /> -->
+
+          <input type="password" id="password" placeholder="Password" required />
+          <button type="submit" class="opacity">Login</button>
+          <div id="message"></div>
+        </form>
+
+        <div class="register-forget opacity">
+          <a href="register.html">REGISTER</a>
+          <a href="forgot.html">FORGOT PASSWORD</a>
+        </div>
+      </div>
+
+      <div class="circle circle-two"></div>
+    </div>
+
+    <div class="theme-btn-container"></div>
+  </section>
+
+  <!-- JQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Login form submission JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('loginForm');
+      const messageDiv = document.getElementById('message');
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Grab email (or username if using)
+        const email = document.getElementById('email')?.value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        try {
+          const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            window.location.href = 'dashboard.html';
+          } else {
+            messageDiv.textContent = data.message || 'Invalid credentials';
+            messageDiv.style.color = 'red';
+          }
+        } catch (error) {
+          console.error(error);
+          messageDiv.textContent = 'Server error, please try again.';
+          messageDiv.style.color = 'red';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
