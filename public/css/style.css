@@ -1,0 +1,203 @@
+/* Reset default styles and base */
+* {
+  margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS variables for easy theming */
+:root {
+ --background-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark gradient */
+ --container-bg: rgba(255, 255, 255, 0.05);
+ --input-bg: rgba(255, 255, 255, 0.1);
+--input-focus: #03c4a1; /* fresh green-blue */
+ --primary-color: #03c4a1;
+ --button-hover: #029e80;
+ --text-color: #f1f1f1;
+ --box-shadow-dark: rgba(0, 0, 0, 0.7);
+}
+
+/* Body and html */
+html {
+ scroll-behavior: smooth;
+}
+
+body {
+ margin: 0;
+ background: var(--background-gradient);
+ color: var(--text-color);
+ letter-spacing: 1px;
+ transition: background 0.5s ease;
+}
+
+/* Link default style */
+a {
+ text-decoration: none;
+ color: var(--text-color);
+ transition: color 0.3s ease;
+}
+
+/* Container center aligned */
+.container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+}
+
+/* Login box with glass effect */
+.login-container {
+ position: relative;
+ width: 320px;
+ background-color: var(--container-bg);
+ padding: 2rem;
+ border-radius: 10px;
+ box-shadow: 0 0 20px var(--box-shadow-dark);
+ backdrop-filter: blur(8px);
+ margin: 2rem auto 0;
+ transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+ transform: translateY(-3px);
+}
+
+/* Circles from first style */
+.circle {
+ width: 8rem;
+ height: 8rem;
+ background: var(--primary-color);
+ border-radius: 50%;
+ position: absolute;
+ z-index: -1;
+}
+
+.circle-one {
+ top: 0;
+ left: 0;
+ transform: translate(-45%, -45%);
+}
+
+.circle-two {
+ bottom: 0;
+ right: 0;
+ transform: translate(45%, 45%);
+}
+
+/* Illustration styling */
+.illustration {
+ position: absolute;
+ top: -14%;
+ right: -2px;
+ width: 90%;
+}
+
+/* Heading */
+.login-container h1 {
+ margin-bottom: 1.5rem;
+ text-align: center;
+ font-size: 1.7rem;
+ font-weight: 600;
+ color: var(--primary-color);
+ opacity: 0.6;
+}
+
+/* Form container border and shadow */
+.form-container {
+ border: 1px solid hsla(0, 0%, 65%, 0.158);
+ box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+ border-radius: 10px;
+ backdrop-filter: blur(20px);
+ padding: 2rem;
+}
+
+/* Input fields style */
+.login-container form input[type="text"],
+.login-container form input[type="password"],
+.login-container form input[type="email"] {
+ display: block;
+ width: 100%;
+ padding: 14.5px 12px;
+ margin: 1.5rem 0;
+ background-color: var(--input-bg);
+ color: var(--text-color);
+ border: none;
+ border-radius: 5px;
+ font-weight: 500;
+ letter-spacing: 0.8px;
+ font-size: 15px;
+ outline: none;
+ backdrop-filter: blur(15px);
+ transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container form input:focus {
+ background-color: rgba(255, 255, 255, 0.15);
+ outline: 2px solid var(--input-focus);
+ box-shadow: 0 0 16px 1px var(--primary-color);
+ animation: wobble 0.3s ease-in;
+}
+
+/* Button style */
+.login-container form button {
+ background-color: var(--primary-color);
+ color: var(--text-color);
+ display: block;
+ width: 100%;
+ padding: 13px;
+ margin-bottom: 2rem;
+ border: none;
+ border-radius: 5px;
+ font-size: 18px;
+ letter-spacing: 1.5px;
+ font-weight: bold;
+ cursor: pointer;
+ transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container form button:hover {
+ background-color: var(--button-hover);
+ box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+ transform: scale(1.03);
+}
+
+/* Register and forgot password links */
+.register-forget {
+ display: flex;
+ justify-content: space-between;
+ margin-top: 1rem;
+}
+
+.register-forget a {
+ color: #ccc;
+ font-size: 0.9rem;
+ transition: color 0.3s ease;
+}
+
+.register-forget a:hover {
+ color: var(--primary-color);
+ text-decoration: underline;
+}
+
+/* Opacity utility */
+.opacity {
+ opacity: 0.6;
+}
+
+/* Theme button container placeholder */
+.theme-btn-container {
+ position: absolute;
+ left: 0;
+ bottom: 2rem;
+}
+
+/* Animation for input focus */
+@keyframes wobble {
+ 0%, 75% {
+ transform: scale(1.025);
+ }
+ 25%, 100% {
+ transform: scale(1);
+ }
+}
