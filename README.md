@@ -18,9 +18,7 @@ A sleek, modern login page UI with glassmorphism effects, smooth animations, and
 
 ---
 
-## Screenshots
 
-![Login Page Screenshot](./screenshot.png)
 
 ---
 
